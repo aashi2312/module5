@@ -1,0 +1,27 @@
+<div ng-controller="SignUpController as signUpCtrl">
+  <form name="signUpForm" ng-submit="signUpCtrl.submit()" novalidate>
+    <label>First Name:</label>
+    <input type="text" name="firstName" ng-model="signUpCtrl.user.firstName" required>
+    <span ng-show="signUpForm.firstName.$touched && signUpForm.firstName.$invalid">Required</span>
+
+    <label>Last Name:</label>
+    <input type="text" name="lastName" ng-model="signUpCtrl.user.lastName" required>
+    <span ng-show="signUpForm.lastName.$touched && signUpForm.lastName.$invalid">Required</span>
+
+    <label>Email:</label>
+    <input type="email" name="email" ng-model="signUpCtrl.user.email" required>
+    <span ng-show="signUpForm.email.$touched && signUpForm.email.$invalid">Enter a valid email</span>
+
+    <label>Phone:</label>
+    <input type="tel" name="phone" ng-model="signUpCtrl.user.phone" required>
+    <span ng-show="signUpForm.phone.$touched && signUpForm.phone.$invalid">Required</span>
+
+    <label>Favorite Menu Number:</label>
+    <input type="text" name="menuNumber" ng-model="signUpCtrl.user.menuNumber" ng-blur="signUpCtrl.validateMenuNumber()" required>
+    <span ng-show="signUpCtrl.invalidMenu">No such menu number exists.</span>
+
+    <button type="submit" ng-disabled="signUpForm.$invalid">Submit</button>
+
+    <p ng-show="signUpCtrl.saved">Your information has been saved.</p>
+  </form>
+</div>
